@@ -6,19 +6,20 @@
 package rc_task_management.interfaces;
 
 /**
+ * <p>
+ * A Dao Factory is a <b>singleton</b>. It has factory method named <b>getInstance</b></p>
  *
  * @author Affan Hasan
  */
-public interface AbstractDaoFactory {
-    
-    public enum DaoType{
+public abstract class AbstractDaoFactory {
+
+    public enum DaoType {
+
         RDBMS,
         MongoDB
     }
     
-    /**
-     * @param daoType
-     * @return <b>RCTaskManagementDao</b>
-     */
-    public RCTaskManagementDao getDAO(DaoType daoType) throws IllegalArgumentException;
+    protected static final DaoType persistenceEngine = DaoType.RDBMS;
+
+    public abstract AbstractDao getDao();
 }

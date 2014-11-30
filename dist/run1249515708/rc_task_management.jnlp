@@ -14,7 +14,7 @@
     <jar href="lib/gson-2.3.1-javadoc.jar" size="257555" download="eager" />
     <jar href="lib/gson-2.3.1-sources.jar" size="139924" download="eager" />
     <jar href="lib/gson-2.3.1.jar" size="210856" download="eager" />
-    <jar href="rc_task_management.jar" size="11486" download="eager" />
+    <jar href="rc_task_management.jar" size="11354" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="rc_task_management" >
     <param name="requiredFXVersion" value="2.2+"/>

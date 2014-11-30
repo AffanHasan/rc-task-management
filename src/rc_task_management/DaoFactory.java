@@ -6,27 +6,35 @@
 package rc_task_management;
 
 import rc_task_management.interfaces.AbstractDaoFactory;
-import rc_task_management.interfaces.RCTaskManagementDao;
+import rc_task_management.interfaces.AbstractDao;
 
 /**
- *
+ * It is a <b>singleton</b> and it has a a factory method named <b>getInstance</b>
  * @author root
  */
-class DaoFactory implements AbstractDaoFactory {
+class DaoFactory extends AbstractDaoFactory {
     
     private DaoFactory(){
     }
-
+    
+    /**
+     This class is to make <b>DaoFactory</b> a singleton
+     */
+    private static class DaoFactoryHolder{
+        static DaoFactory instance = new DaoFactory();
+    }
+    
+    public static DaoFactory getInstance(){
+        return DaoFactoryHolder.instance;
+    }
+    
     @Override
-    public RCTaskManagementDao getDAO(DaoType daoType) {
-        RCTaskManagementDao dao = null;
-        
-        switch(daoType){
+    public AbstractDao getDao(){
+        switch(persistenceEngine){
             case RDBMS:
-                break;
-            case MongoDB:
-                break;
+                return DaoRdbms.getInstance();
+            default :
+                return null;
         }
-        return dao;
     }
 }
