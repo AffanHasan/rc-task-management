@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import rc_task_management.interfaces.AbstractDao;
@@ -20,7 +21,12 @@ import rc_task_management.interfaces.AbstractDao;
 class DaoRdbms extends AbstractDao {
 
     private DaoRdbms() {
-        this.initPersistenceEngine();
+        try {
+            connection = DriverManager.getConnection("jdbc:derby:rc_task_management;create=true");
+            this.initPersistenceEngine();
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoRdbms.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private Connection connection;
@@ -42,10 +48,20 @@ class DaoRdbms extends AbstractDao {
     @Override
     protected boolean initPersistenceEngine() {
         try {
-            connection = DriverManager.getConnection("jdbc:derby:rc_task_management;create=true");
+            Statement statement = connection.createStatement();
+//          Create table day_entry
+            statement.execute("CREATE TABLE day_entry( date date )");
+//          Create table task
+            statement.execute("CREATE TABLE task( id int, day_entry_date date, text varchar(500), task_category_id int, task_status_id int, order_id int )");
+//          Create table task_status_log
+            statement.execute("CREATE TABLE task_status_log( task_id int, task_status_id int, time_stamp timestamp )");
+//          Create table task_categories
+            statement.execute("CREATE TABLE task_categories( category_id int, category_name varchar(255) )");
+//          Create table task_status
+            statement.execute("CREATE TABLE task_status( status_id int, status_name varchar(255) )");
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(DaoRdbms.class.getName()).log(Level.SEVERE, "Unable to start Java db", ex);
+            Logger.getLogger(DaoRdbms.class.getName()).log(Level.SEVERE, "", ex);
             return false;
         }
     }
@@ -57,7 +73,12 @@ class DaoRdbms extends AbstractDao {
 
     @Override
     public boolean persistDayLogDocument(JsonObject dayLogDocument) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            java.sql.Date d;
+            return true;
+        }catch(Exception e){
+            return false;
+        }
     }
 
     /**

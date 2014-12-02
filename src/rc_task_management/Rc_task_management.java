@@ -40,6 +40,7 @@ public class Rc_task_management extends Application {
     public void start(Stage primaryStage) {
         this.init(primaryStage);
         primaryStage.show();
+        DaoFactory.getInstance().getDao();
     }
 
     /**

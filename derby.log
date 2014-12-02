@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Dec 01 22:07:04 PKT 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.3 - (1557168): instance a816c00e-014a-06d1-da83-000003ade790 
+on database directory /home/affan/Development/NetBeansProjects/rc_task_management/rc_task_management with class loader sun.misc.Launcher$AppClassLoader@55f96302 
+Loaded from file:/home/affan/Development/NetBeansProjects/rc_task_management/dist/run1642314612/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_11-b12
+user.dir=/home/affan/Development/NetBeansProjects/rc_task_management
+os.name=Linux
+os.arch=amd64
+os.version=3.13.0-32-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
